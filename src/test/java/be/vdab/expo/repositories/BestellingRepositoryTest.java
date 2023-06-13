@@ -54,4 +54,11 @@ class BestellingRepositoryTest extends AbstractTransactionalJUnit4SpringContextT
                 () -> bestellingRepo.bestel(new Bestelling("test", 4))
         );
     }
+
+    @Test
+    void bestellingNegatiefTypeMislukt() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
+                () -> bestellingRepo.bestel(new Bestelling("test", -2))
+        );
+    }
 }
